@@ -1,0 +1,20 @@
+{
+  "mcpServers": {
+    "1c-syntax-checker-mcp": {
+      "url": "http://localhost:8002/mcp",
+      "connection_id": "1c_lsp_service_001"
+    },
+    "1c-templates-mcp": {
+      "url": "http://localhost:8004/mcp",
+      "connection_id": "1c_templates_service_001"
+    },
+    "1c-code-check-mcp": {
+      "url": "http://localhost:8007/mcp",
+      "connection_id": "1c_code_check_service_001"
+    },
+    "1c-ssl-mcp": {
+      "url": "http://localhost:8008/mcp",
+      "connection_id": "1c_ssl_service_001"
+    }
+  }
+}

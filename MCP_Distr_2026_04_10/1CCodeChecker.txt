@@ -1,0 +1,27 @@
+Документация: https://docs.onerpa.ru/mcp-servery-1c/servery/code-checker
+
+Инструкция по установке:
+
+1) В случае с Windows нужен Docker Desktop - скачиваем и устанавливаем. И WSL2. Под Linux и Mac нужен просто Docker
+
+2) Запускаем команду:
+docker run -d --name 1c-code-checker -p 8007:8007 -e ONEC_AI_TOKEN= -e LICENSE_KEY=fad9f23d-6242-4543-b311-e1973e46cb6f -e USESSE=false comol/1c-code-checker:latest
+Ваш лицензионный ключ уже вшит в команду 
+ONEC_AI_TOKEN - ключ от 1С:Напарника!!! Можно получить только партнёрам фирмы 1С и получить его соответственно нужно
+
+
+3) mcp.json для Cursor будет выглядеть вот так. Если серверов больше, они добавляются через запятую
+{
+  "mcpServers": {
+    "1c-docs-mcp": {
+      "url": "http://localhost:8007/mcp",
+      "connection_id": "1c_code_checker_001"
+    }
+  }
+} 
+
+На Linux и в Windows 11 если видеокарта Nvidia можно добавить параметр
+--gpus all
+Есть вероятность что контейнер начнёт использовать видеокарту.
+
+P.S. Оригинальная идея https://github.com/artesk/1copilot_MCP

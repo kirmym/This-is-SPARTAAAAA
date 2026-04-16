@@ -1,0 +1,30 @@
+Документация: https://docs.onerpa.ru/mcp-servery-1c/servery/syntax-check-server
+
+Инструкция по установке:
+
+1) В случае с Windows нужен Docker Desktop - скачиваем и устанавливаем. И WSL2. Под Linux и Mac нужен просто Docker
+
+2) Запускаем команду:
+docker run -d -p 8002:8002 -e LICENSE_KEY="a3c618a9-11c2-4e92-8854-3e911c750176" comol/1c_syntaxcheck_mcp:latest
+Ваш лицензионный ключ уже вшит в команду 
+
+3) mcp.json для Cursor будет выглядеть вот так:
+{
+  "mcpServers": {
+    "1c-syntax-checker-mcp": {
+      "url": "http://localhost:8002/mcp",
+      "connection_id": "1c_lsp_service_001"
+    }
+  }
+}
+
+
+UPD 
+
+Добавьте 
+-e USESSE=true
+В качестве транспорта использовать SSE. Необходимо для Legacy клиентов.
+
+На Linux и в Windows 11 если видеокарта Nvidia можно добавить параметр
+--gpus all
+Есть вероятность что контейнер начнёт использовать видеокарту.

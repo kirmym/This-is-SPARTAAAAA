@@ -1,0 +1,7 @@
+.dev.env
+.firecrawl/
+bases/
+bases/mcp_templates/model_cache/
+bases/mcp_templates/logs/
+bases/mcp_docs/
+bases/mcp_codemetadata/

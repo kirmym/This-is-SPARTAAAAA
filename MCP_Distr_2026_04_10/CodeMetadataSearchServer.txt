@@ -1,0 +1,110 @@
+Документация: https://docs.onerpa.ru/mcp-servery-1c/servery/code-metadata-search
+
+Инструкция по установке:
+
+1) В случае с Windows нужен Docker Desktop - скачиваем и устанавливаем. И WSL2. Под Linux и Mac нужен просто Docker
+
+2) Запускаем команду:
+
+с работой через OpenRouter
+docker run -d -p 8000:8000 `
+-e LICENSE_KEY="f6ed45f8-0517-4d13-b207-ad5925452738" `
+-e METADATA_PATH="/app/metadata" `
+-e CODE_PATH="/app/code" `
+-e OPENAI_API_BASE="https://openrouter.ai/api" `
+-e OPENAI_API_KEY="ваш-ключ-openrouter" `
+-e OPENAI_MODEL="qwen/qwen3-embedding-8b" `
+-e RESET_DATABASE="false" `
+-e USESSE="false" `
+-v "E:/OneAPAREport:/app/metadata" `
+-v "E:/OneAPAFiles:/app/code" `
+-v "E:/bases/mcp_codemetadata:/app/chroma_db" `
+comol/1c_code_metadata_mcp:light
+
+Метки также возможны :latest, :arm64. latest - включает возможность локального запуска моделей (:light - Только по API). arm64 - соответственно под arm64 процессор
+
+docker run -d -p 8000:8000 -e LICENSE_KEY="f6ed45f8-0517-4d13-b207-ad5925452738" -e METADATA_PATH="/app/metadata" -e CODE_PATH="/app/code" -v "E:/OneAPAREport:/app/metadata" -v "E:/OneAPAFiles:/app/code" comol/1c_code_metadata_mcp
+Ваш лицензионный ключ уже вшит в команду 
+    Меняем параметры:
+	- E:/OneAPAREport - на путь к папке куда вы выгрузили текстовый отчет из конфигурации (Конфигурация - отчет из конфигурации) в Конфигурацторе
+	- E:/OneAPAFiles - путь к каталогу с файлами с кодом (Конфигурация - выгрузить конфигурацию в файлы) или каталог EDT
+Менять только эти каталоги. 
+
+3) Ждём! Индексация может занять до нескольких часов. Посмотреть текущий статус можно через docker logs. Или "-d" в параметрах команды меняем на "-it" (и не закрываем окно терминала) чтобы видеть вывод в реальном времени.
+При старте в систему будет выкачиваться контейнер и ещё модель сверху. Нужен доступ в Интернет и до 10ГБ на диске.
+
+ВАЖНО: Обязательно используйте параметр -v для сохранения индексов! Без этого при перезапуске 
+контейнера потребуется повторная индексация (несколько часов).
+
+4) mcp.json для Cursor будет выглядеть вот так:
+{
+  "mcpServers": {
+    "1c-code-metadata-mcp": {
+      "url": "http://localhost:8000/mcp",
+      "connection_id": "1c_metadata_service_001"
+    }
+  }
+} 
+
+UPD
+Более сложный вариант запуска (для PowerShell, символ ` для переноса строк):
+
+docker run -d -p 8000:8000 `
+-e LICENSE_KEY="f6ed45f8-0517-4d13-b207-ad5925452738" `
+-e METADATA_PATH="/app/metadata" `
+-e CODE_PATH="/app/code" `
+-e RESET_DATABASE="false" `
+-e USESSE="false" `
+-v "E:/OneAPAREport:/app/metadata" `
+-v "E:/OneAPAFiles:/app/code" `
+-v "E:/bases/mcp_codemetadata:/app/chroma_db" `
+comol/1c_code_metadata_mcp:latest
+
+По умолчанию RESET_CACHE=true RESET_DATABASE=true USESSE=false
+RESET_CACHE - заново загружает модель в контейнер. Если false - будет использоваться кэшированная
+RESET_DATABASE - полностью переииндиксировать все данные. Для этого надо базу обязательно
+USESSE - в качестве транспорта использует SSE. Необходимо для Legacy клиентов. 
+E:/bases/mcp_codemetadata - путь до каталога где создать векторную БД
+
+EMBEDDING_MODEL - дополнительный параметр. Позволяет использовать свою модель.
+Нужно только указать название модели, вот отсюда:
+https://huggingface.co/models?pipeline_tag=sentence-similarity&language=ru&sort=likes
+
+Можно использовать внешнюю локальную модель Embedding - для более правильной RAG индексации.
+Для этого надо можно установить три параметра:
+OPENAI_API_BASE
+OPENAI_API_KEY
+OPENAI_MODEL
+Если их не устанавливать - будут использованы дефолтные значения, устанавливаемые после запуска LM Studio.
+Модели можно использовать любые. Лучше Qwen4 Embedding 4b\8b. OpenAI - это только формат API, предоставляемый практически всеми сервисами
+
+Пример использования OpenRouter для Embedding:
+OPENAI_API_BASE=https://openrouter.ai/api
+OPENAI_API_KEY=ваш-ключ-openrouter
+OPENAI_MODEL=qwen/qwen3-embedding-8b
+
+Пример запуска с OpenRouter (для PowerShell):
+
+docker run -d -p 8000:8000 `
+-e LICENSE_KEY="f6ed45f8-0517-4d13-b207-ad5925452738" `
+-e METADATA_PATH="/app/metadata" `
+-e CODE_PATH="/app/code" `
+-e OPENAI_API_BASE="https://openrouter.ai/api" `
+-e OPENAI_API_KEY="ваш-ключ-openrouter" `
+-e OPENAI_MODEL="qwen/qwen3-embedding-8b" `
+-e RESET_DATABASE="false" `
+-e USESSE="false" `
+-v "E:/OneAPAREport:/app/metadata" `
+-v "E:/OneAPAFiles:/app/code" `
+-v "E:/bases/mcp_codemetadata:/app/chroma_db" `
+comol/1c_code_metadata_mcp:light
+
+К примеру, дефолтная: intfloat/multilingual-e5-small
+От испольузуемой модели зависит качество поиска, но и скорость его и требования к ресурсам.
+При использовании кастомной модели рекомендую подключить /app/model_cache как том.
+
+На Linux и в Windows 11 если видеокарта Nvidia можно добавить параметр
+--gpus all
+Есть вероятность что контейнер начнёт использовать видеокарту. 
+
+В коде использован https://github.com/Dach-Coin/rlm-tools-bsl

@@ -1,0 +1,70 @@
+Документация: https://docs.onerpa.ru/mcp-servery-1c/servery/templates-search-server
+
+Инструкция по установке:
+
+1) В случае с Windows нужен Docker Desktop - скачиваем и устанавливаем. И WSL2. Под Linux и Mac нужен просто Docker
+
+2) Запускаем команду:
+
+Рекомендуемая команда (light версия и использование OpenRouter Qwen модели)
+docker run -d `
+  -e RESET_CACHE=false `
+  -e RESET_DATABASE=false `
+  -e USESSE=false `
+  -e LICENSE_KEY=23e91120-2efa-49a3-bafa-fc8a891974a3 `
+  -e OPENAI_API_BASE="https://openrouter.ai/api" `
+  -e OPENAI_API_KEY="my-openai-key" `
+  -e OPENAI_MODEL="qwen/qwen3-embedding-8b" `
+  -p 8004:8004 `
+  -v "E:/bases/mcp_templates:/app/chroma_db" `
+  comol/template-search-mcp:light
+
+В ней нужно поменять только E:/bases/mcp_templates - ваш путь где будут храниться данные. И my_key - ваш ключ OpenRouter
+
+
+docker run -d -e RESET_CACHE=false -e RESET_DATABASE=false -e USESSE=false -e LICENSE_KEY=23e91120-2efa-49a3-bafa-fc8a891974a3 -v "E:/bases/mcp_templates:/app/chroma_db" -p 8004:8004 comol/template-search-mcp:latest
+В принципе для этого сервиса переиндексация при старте нормальное решение, можно не подключать том.
+Но если подключать то команда:
+docker run -d -e RESET_CACHE=false -e RESET_DATABASE=false -e USESSE=false -e LICENSE_KEY=23e91120-2efa-49a3-bafa-fc8a891974a3 -p 8004:8004 -v "E:/bases/mcp_templates:/app/chroma_db" comol/template-search-mcp:latest
+где E:/bases/mcp_templates - путь к каталогу на хосте для размещения БД
+
+Ваш лицензионный ключ уже вшит в команду 
+
+3) Интерфейс для редактирования шаблонов находится по адресу: http://localhost:8004/extend/ также вы можете редактировать шаблоны напрямую.
+
+3) mcp.json для Cursor будет выглядеть вот так. Если серверов больше, они добавляются через запятую
+{
+  "mcpServers": {
+    "1c-templates-mcp": {
+      "url": "http://localhost:8004/mcp",
+      "connection_id": "1c_docs_service_001"
+    }
+  }
+} 
+
+
+Дополнительно можно передать в контейнер модель:
+-e EMBEDDING_MODEL=ai-forever/FRIDA 
+Лучше использовать LMStudio с запущенной моделью Qwen3 Embedding 4B, он предоставит OpenAI совместимое API и Сразу с использованием видеокарты
+
+Можно использовать внешнюю локальную модель Embedding - для более правильной RAG индексации.
+Для этого надо можно установить три параметра:
+OPENAI_API_BASE
+OPENAI_API_KEY
+OPENAI_MODEL
+Если их не устанавливать - будут использованы дефолтные значения, устанавливаемые после запуска LM Studio.
+Модели можно использовать любые. Лучше Qwen4 Embedding 4b\8b. OpenAI - это только формат API, предоставляемый практически всеми сервисами
+
+Пример использования OpenRouter для Embedding:
+OPENAI_API_BASE=https://openrouter.ai/api
+OPENAI_API_KEY=ваш-ключ-openrouter
+OPENAI_MODEL=qwen/qwen3-embedding-8b
+
+Пример запуска с OpenRouter (для PowerShell):
+
+
+На Linux и в Windows 11 если видеокарта Nvidia можно добавить параметр
+--gpus all
+Есть вероятность что контейнер начнёт использовать видеокарту. 
+
+При подготовке использовались шаблоны с https://fastcode.im/Templates в том числе.
