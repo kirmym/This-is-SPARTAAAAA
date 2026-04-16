@@ -1,0 +1,513 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<ChildItems>
+		<Button name="ЗагрузитьФайлРедмайн" id="1">
+			<Type>UsualButton</Type>
+			<CommandName>Form.Command.ЗагрузитьФайлРедмайн</CommandName>
+			<ExtendedTooltip name="ЗагрузитьФайлРедмайнРасширеннаяПодсказка" id="2"/>
+		</Button>
+		<Button name="СоздатьДокументыДО" id="3">
+			<Type>UsualButton</Type>
+			<CommandName>Form.Command.СоздатьДокументыДО</CommandName>
+			<ExtendedTooltip name="СоздатьДокументыДОРасширеннаяПодсказка" id="4"/>
+		</Button>
+		<Button name="СопоставитьСотрудников" id="129">
+			<Type>UsualButton</Type>
+			<CommandName>Form.Command.СопоставитьСотрудников</CommandName>
+			<ExtendedTooltip name="СопоставитьСотрудниковРасширеннаяПодсказка" id="130"/>
+		</Button>
+		<Button name="СопоставитьПроекты" id="131">
+			<Type>UsualButton</Type>
+			<CommandName>Form.Command.СопоставитьПроекты</CommandName>
+			<ExtendedTooltip name="СопоставитьПроектыРасширеннаяПодсказка" id="132"/>
+		</Button>
+		<Pages name="Страницы" id="127">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страницы</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страницы</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="СтраницыРасширеннаяПодсказка" id="128"/>
+			<ChildItems>
+				<Page name="СтраницаОсновная" id="94">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница основная</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница основная</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="СтраницаОсновнаяРасширеннаяПодсказка" id="95"/>
+					<ChildItems>
+						<Table name="ТаблицаВыгрузки" id="26">
+							<Representation>List</Representation>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>ТаблицаВыгрузки</DataPath>
+							<ShowCommandBar>auto</ShowCommandBar>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ТаблицаВыгрузкиКонтекстноеМеню" id="27"/>
+							<AutoCommandBar name="ТаблицаВыгрузкиКоманднаяПанель" id="28"/>
+							<ExtendedTooltip name="ТаблицаВыгрузкиРасширеннаяПодсказка" id="29"/>
+							<SearchStringAddition name="ТаблицаВыгрузкиСтрокаПоиска" id="30">
+								<AdditionSource>
+									<Item>ТаблицаВыгрузки</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаВыгрузкиСтрокаПоискаКонтекстноеМеню" id="31"/>
+								<ExtendedTooltip name="ТаблицаВыгрузкиСтрокаПоискаРасширеннаяПодсказка" id="32"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ТаблицаВыгрузкиСостояниеПросмотра" id="33">
+								<AdditionSource>
+									<Item>ТаблицаВыгрузки</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаВыгрузкиСостояниеПросмотраКонтекстноеМеню" id="34"/>
+								<ExtendedTooltip name="ТаблицаВыгрузкиСостояниеПросмотраРасширеннаяПодсказка" id="35"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ТаблицаВыгрузкиУправлениеПоиском" id="36">
+								<AdditionSource>
+									<Item>ТаблицаВыгрузки</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаВыгрузкиУправлениеПоискомКонтекстноеМеню" id="37"/>
+								<ExtendedTooltip name="ТаблицаВыгрузкиУправлениеПоискомРасширеннаяПодсказка" id="38"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<InputField name="ТаблицаВыгрузки1Сотрудник" id="47">
+									<DataPath>ТаблицаВыгрузки.Сотрудник</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+									<ContextMenu name="ТаблицаВыгрузки1СотрудникКонтекстноеМеню" id="48"/>
+									<ExtendedTooltip name="ТаблицаВыгрузки1СотрудникРасширеннаяПодсказка" id="49"/>
+								</InputField>
+								<InputField name="ТаблицаВыгрузки1Проект" id="51">
+									<DataPath>ТаблицаВыгрузки.Проект</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+									<ContextMenu name="ТаблицаВыгрузки1ПроектКонтекстноеМеню" id="52"/>
+									<ExtendedTooltip name="ТаблицаВыгрузки1ПроектРасширеннаяПодсказка" id="53"/>
+								</InputField>
+								<InputField name="ТаблицаВыгрузки1Часы" id="55">
+									<DataPath>ТаблицаВыгрузки.Часы</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+									<ContextMenu name="ТаблицаВыгрузки1ЧасыКонтекстноеМеню" id="56"/>
+									<ExtendedTooltip name="ТаблицаВыгрузки1ЧасыРасширеннаяПодсказка" id="57"/>
+								</InputField>
+								<InputField name="ТаблицаВыгрузки1Дата" id="59">
+									<DataPath>ТаблицаВыгрузки.Дата</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+									<ContextMenu name="ТаблицаВыгрузки1ДатаКонтекстноеМеню" id="60"/>
+									<ExtendedTooltip name="ТаблицаВыгрузки1ДатаРасширеннаяПодсказка" id="61"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаСопоставлениеСотрудников" id="63">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница сопоставление сотрудников</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница сопоставление сотрудников</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="СтраницаСопоставлениеСотрудниковРасширеннаяПодсказка" id="64"/>
+					<ChildItems>
+						<Table name="ТаблицаСотрудники" id="65">
+							<Representation>List</Representation>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>ТаблицаСотрудники</DataPath>
+							<ShowCommandBar>auto</ShowCommandBar>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ТаблицаСотрудникиКонтекстноеМеню" id="66"/>
+							<AutoCommandBar name="ТаблицаСотрудникиКоманднаяПанель" id="67"/>
+							<ExtendedTooltip name="ТаблицаСотрудникиРасширеннаяПодсказка" id="68"/>
+							<SearchStringAddition name="ТаблицаСотрудникиСтрокаПоиска" id="69">
+								<AdditionSource>
+									<Item>ТаблицаСотрудники</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаСотрудникиСтрокаПоискаКонтекстноеМеню" id="70"/>
+								<ExtendedTooltip name="ТаблицаСотрудникиСтрокаПоискаРасширеннаяПодсказка" id="71"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ТаблицаСотрудникиСостояниеПросмотра" id="72">
+								<AdditionSource>
+									<Item>ТаблицаСотрудники</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаСотрудникиСостояниеПросмотраКонтекстноеМеню" id="73"/>
+								<ExtendedTooltip name="ТаблицаСотрудникиСостояниеПросмотраРасширеннаяПодсказка" id="74"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ТаблицаСотрудникиУправлениеПоиском" id="75">
+								<AdditionSource>
+									<Item>ТаблицаСотрудники</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаСотрудникиУправлениеПоискомКонтекстноеМеню" id="76"/>
+								<ExtendedTooltip name="ТаблицаСотрудникиУправлениеПоискомРасширеннаяПодсказка" id="77"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<InputField name="ТаблицаСотрудникиСотрудникРедмайн" id="86">
+									<DataPath>ТаблицаСотрудники.СотрудникРедмайн</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+									<ContextMenu name="ТаблицаСотрудникиСотрудникРедмайнКонтекстноеМеню" id="87"/>
+									<ExtendedTooltip name="ТаблицаСотрудникиСотрудникРедмайнРасширеннаяПодсказка" id="88"/>
+								</InputField>
+								<InputField name="ТаблицаСотрудникиСотрудникДО" id="90">
+									<DataPath>ТаблицаСотрудники.СотрудникДО</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+									<ContextMenu name="ТаблицаСотрудникиСотрудникДОКонтекстноеМеню" id="91"/>
+									<ExtendedTooltip name="ТаблицаСотрудникиСотрудникДОРасширеннаяПодсказка" id="92"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаСопоставлениеПроектов" id="96">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница сопоставление проектов</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница сопоставление проектов</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="СтраницаСопоставлениеПроектовРасширеннаяПодсказка" id="97"/>
+					<ChildItems>
+						<Table name="ТаблицаПроекты" id="98">
+							<Representation>List</Representation>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>ТаблицаПроекты</DataPath>
+							<ShowCommandBar>auto</ShowCommandBar>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ТаблицаПроектыКонтекстноеМеню" id="99"/>
+							<AutoCommandBar name="ТаблицаПроектыКоманднаяПанель" id="100"/>
+							<ExtendedTooltip name="ТаблицаПроектыРасширеннаяПодсказка" id="101"/>
+							<SearchStringAddition name="ТаблицаПроектыСтрокаПоиска" id="102">
+								<AdditionSource>
+									<Item>ТаблицаПроекты</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаПроектыСтрокаПоискаКонтекстноеМеню" id="103"/>
+								<ExtendedTooltip name="ТаблицаПроектыСтрокаПоискаРасширеннаяПодсказка" id="104"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ТаблицаПроектыСостояниеПросмотра" id="105">
+								<AdditionSource>
+									<Item>ТаблицаПроекты</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаПроектыСостояниеПросмотраКонтекстноеМеню" id="106"/>
+								<ExtendedTooltip name="ТаблицаПроектыСостояниеПросмотраРасширеннаяПодсказка" id="107"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ТаблицаПроектыУправлениеПоиском" id="108">
+								<AdditionSource>
+									<Item>ТаблицаПроекты</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаПроектыУправлениеПоискомКонтекстноеМеню" id="109"/>
+								<ExtendedTooltip name="ТаблицаПроектыУправлениеПоискомРасширеннаяПодсказка" id="110"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<InputField name="ТаблицаПроектыПроектРедмайн" id="119">
+									<DataPath>ТаблицаПроекты.ПроектРедмайн</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+									<ContextMenu name="ТаблицаПроектыПроектРедмайнКонтекстноеМеню" id="120"/>
+									<ExtendedTooltip name="ТаблицаПроектыПроектРедмайнРасширеннаяПодсказка" id="121"/>
+								</InputField>
+								<InputField name="ТаблицаПроектыПроектДО" id="123">
+									<DataPath>ТаблицаПроекты.ПроектДО</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+									<ContextMenu name="ТаблицаПроектыПроектДОКонтекстноеМеню" id="124"/>
+									<ExtendedTooltip name="ТаблицаПроектыПроектДОРасширеннаяПодсказка" id="125"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:ExternalDataProcessorObject.ПереносИзРедмайнаВДО</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="ТаблицаВыгрузки" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таблица выгрузки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Сотрудник" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сотрудник</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Пользователи</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Проект" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Проект</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Проекты</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Часы" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Часы</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>2</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Дата" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="СотрудникРедмайн" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сотрудник редмайн</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ПроектРедмайн" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Проект редмайн</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ТаблицаСотрудники" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таблица сотрудники</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<Columns>
+				<Column name="СотрудникРедмайн" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сотрудник редмайн</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="СотрудникДО" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сотрудник ДО</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Пользователи</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ТаблицаПроекты" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таблица проекты</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<Columns>
+				<Column name="ПроектРедмайн" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Проект редмайн</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ПроектДО" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Проект ДО</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Проекты</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ЗагрузитьФайлРедмайн" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить файл редмайн</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить файл редмайн</v8:content>
+				</v8:item>
+			</ToolTip>
+		</Command>
+		<Command name="СоздатьДокументыДО" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать документы ДО</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать документы ДО</v8:content>
+				</v8:item>
+			</ToolTip>
+		</Command>
+		<Command name="СопоставитьСотрудников" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сопоставить сотрудников</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сопоставить сотрудников</v8:content>
+				</v8:item>
+			</ToolTip>
+		</Command>
+		<Command name="СопоставитьПроекты" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сопоставить проекты</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сопоставить проекты</v8:content>
+				</v8:item>
+			</ToolTip>
+		</Command>
+	</Commands>
+</Form>
